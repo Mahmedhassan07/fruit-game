@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d1b2a;
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+#bg-stars {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, #1a2a3a 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #0f2233 0%, transparent 50%),
+    #0d1b2a;
+  z-index: 0;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+/* ── HUD ── */
+#ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px 28px;
+  pointer-events: none;
+}
+
+.ui-box {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 10px 22px;
+  backdrop-filter: blur(8px);
+}
+
+.ui-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.ui-value {
+  font-family: 'Fredoka One', cursive;
+  font-size: 32px;
+  color: #fff;
+  line-height: 1;
+}
+
+#timer-box .ui-value {
+  color: #f9c74f;
+}
+
+#timer-box.danger .ui-value {
+  color: #f94144;
+  animation: pulse 0.5s infinite alternate;
+}
+
+/* ── Combo Display ── */
+#combo-display {
+  position: fixed;
+  top: 110px;
+  right: 28px;
+  z-index: 10;
+  text-align: right;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.combo-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 42px;
+  color: #f9c74f;
+  text-shadow: 0 0 20px rgba(249, 199, 79, 0.6);
+  line-height: 1;
+}
+
+.combo-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(249, 199, 79, 0.7);
+  font-weight: 700;
+}
+
+/* ── Screens ── */
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 27, 42, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.screen h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(52px, 10vw, 90px);
+  color: #fff;
+  line-height: 1;
+  text-align: center;
+}
+
+.screen h1 span {
+  color: #f9c74f;
+}
+
+.screen p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 17px;
+  margin: 16px 0 40px;
+  text-align: center;
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+/* ── Button ── */
+.btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: #0d1b2a;
+  background: #f9c74f;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 56px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 6px 30px rgba(249, 199, 79, 0.4);
+  pointer-events: all;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(249, 199, 79, 0.6);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Game Over Screen ── */
+#gameover-screen .score-big {
+  font-family: 'Fredoka One', cursive;
+  font-size: 80px;
+  color: #f9c74f;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(249, 199, 79, 0.5);
+}
+
+#gameover-screen .score-label {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+#high-score-notice {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  color: #90e0ef;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  min-height: 30px;
+}
+
+/* ── Animations ── */
+.fruit-emoji {
+  font-size: 60px;
+  margin-bottom: 16px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
+.hidden {
+  display: none !important;
+}

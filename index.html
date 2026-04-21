@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruit Slicer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<div id="bg-stars"></div>
+<canvas id="gameCanvas"></canvas>
+ 
+<!-- HUD -->
+<div id="ui">
+  <div class="ui-box" id="score-box">
+    <div class="ui-label">Score</div>
+    <div class="ui-value" id="score-val">0</div>
+  </div>
+  <div class="ui-box" id="timer-box">
+    <div class="ui-label">Time</div>
+    <div class="ui-value" id="timer-val">60</div>
+  </div>
+  <div class="ui-box">
+    <div class="ui-label">Best</div>
+    <div class="ui-value" id="best-val">0</div>
+  </div>
+</div>
+ 
+<div id="combo-display" class="hidden">
+  <div class="combo-text" id="combo-text">x2</div>
+  <div class="combo-label">Combo!</div>
+</div>
+ 
+<!-- Start Screen -->
+<div class="screen" id="start-screen">
+  <div class="fruit-emoji">🍉</div>
+  <h1>Fruit <span>Slicer</span></h1>
+  <p>Click fruits as fast as you can! Build combos by clicking multiple fruits quickly. You have 60 seconds — go!</p>
+  <button class="btn" onclick="startGame()">Play Now</button>
+</div>
+ 
+<!-- Game Over Screen -->
+<div class="screen hidden" id="gameover-screen">
+  <div class="score-label">Your Score</div>
+  <div class="score-big" id="final-score">0</div>
+  <div id="high-score-notice"></div>
+  <button class="btn" onclick="startGame()">Play Again</button>
+</div>
+ 
+<script src="game.js"></script>
+</body>
+</html>
+
