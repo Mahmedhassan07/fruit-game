@@ -21,7 +21,6 @@ const FRUITS = [
   { emoji: '🥝', color: '#90be6d', points: 3 },
   { emoji: '🍍', color: '#f9c74f', points: 4 },
   { emoji: '🍒', color: '#c1121f', points: 2 },
-  { emoji: '🫐', color: '#577590', points: 3 },
 ];
 
 // ── Game State ────────────────────────────────────────────────
