@@ -100,27 +100,20 @@ class Fruit {
     }
   }
 
-draw() {
+  draw() {
   ctx.save();
   ctx.globalAlpha = this.opacity;
   ctx.translate(this.x, this.y);
   ctx.rotate(this.rotation);
   ctx.scale(this.scale, this.scale);
 
-  // Soft glow behind the emoji
-  ctx.shadowColor = this.color;
-  ctx.shadowBlur = this.sliced ? 40 : 20;
-
-  // Emoji
+  // Just the emoji — no circle background
   ctx.font = `${this.r * 1.6}px serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(this.emoji, 0, 2);
 
-  // Reset shadow before drawing slice lines
-  ctx.shadowBlur = 0;
-
-  // Slice lines
+  // Slice lines (shown after cut)
   if (this.sliced) {
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 3;
@@ -138,6 +131,13 @@ draw() {
   }
 
   ctx.restore();
+}
+  // Check if a point (px, py) is inside this fruit's circle
+  contains(px, py) {
+    const dx = px - this.x;
+    const dy = py - this.y;
+    return Math.sqrt(dx * dx + dy * dy) <= this.r;
+  }
 }
 
 // ── Particle Class ────────────────────────────────────────────
