@@ -114,8 +114,11 @@ class Fruit {
     // Circle background
     ctx.beginPath();
     ctx.arc(0, 0, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
+    ctx.fillStyle   = this.color + '33';
     ctx.fill();
+    ctx.strokeStyle = this.color + '88';
+    ctx.lineWidth   = 2;
+    ctx.stroke();
 
     // Emoji
     ctx.shadowBlur      = 0;
@@ -284,7 +287,7 @@ canvas.addEventListener('touchstart', (e) => {
 function drawBackground() {
   ctx.strokeStyle = 'rgba(255,255,255,0.02)';
   ctx.lineWidth   = 1;
-  const gs        = 20;
+  const gs        = 60;
 
   for (let x = 0; x < canvas.width; x += gs) {
     ctx.beginPath();
